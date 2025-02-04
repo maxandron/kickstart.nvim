@@ -1029,7 +1029,7 @@ require("lazy").setup({
           scope = {
             enabled = true, -- enable highlighting the current scope
             underline = false, -- underline the current scope
-            hl = "GruvboxGray",
+            hl = "SnacksIndentScope", -- hl group for the current scope
             -- hl = {
             --   "SnacksIndent1",
             --   "SnacksIndent2",
