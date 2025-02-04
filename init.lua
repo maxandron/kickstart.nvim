@@ -992,6 +992,68 @@ require("lazy").setup({
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = function()
+      -- vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#3b4261" })
+
+      ---@type snacks.Config
+      return {
+        -- Don't load lsp on large files
+        bigfile = { enabled = true },
+        indent = {
+          enabled = true,
+          indent = {
+            char = "|",
+            only_scope = false,
+            only_current = false,
+            hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
+
+            -- can be a list of hl groups to cycle through
+            -- hl = {
+            --   "SnacksIndent1",
+            --   "SnacksIndent2",
+            --   "SnacksIndent3",
+            --   "SnacksIndent4",
+            --   "SnacksIndent5",
+            --   "SnacksIndent6",
+            --   "SnacksIndent7",
+            --   "SnacksIndent8",
+            -- },
+          },
+          animate = {
+            style = "out",
+          },
+          scope = {
+            enabled = true, -- enable highlighting the current scope
+            underline = false, -- underline the current scope
+            hl = "GruvboxGray",
+            -- hl = {
+            --   "SnacksIndent1",
+            --   "SnacksIndent2",
+            --   "SnacksIndent3",
+            --   "SnacksIndent4",
+            --   "SnacksIndent5",
+            --   "SnacksIndent6",
+            --   "SnacksIndent7",
+            --   "SnacksIndent8",
+            -- },
+          },
+        },
+        -- Pretty vim.notify
+        notifier = { enabled = true },
+        -- When doing nvim somefile.txt, it will render the file as quickly as possible, before loading your plugins.
+        quickfile = { enabled = true },
+        -- Smooth scrolling
+        scroll = { enabled = true },
+        -- Highlight lsp references
+        words = { enabled = true },
+      }
+    end,
+  },
+
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
